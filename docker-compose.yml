@@ -1,0 +1,37 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+      - "2222:22"
+    volumes:
+      - ./repositories:/data/repositories
+      - ./ssh-keys:/etc/ssh/authorized_keys.d
+    environment:
+      - DATABASE_URL=postgresql://gitlight:password@db:5432/gitlight
+      - AUTH_SECRET=${AUTH_SECRET}
+      - AUTH_URL=http://localhost:3000
+      - REPOS_PATH=/data/repositories
+      - NODE_ENV=production
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=gitlight
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=gitlight
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gitlight"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

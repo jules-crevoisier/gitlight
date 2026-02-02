@@ -1,0 +1,48 @@
+{
+  "name": "gitlight",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@auth/prisma-adapter": "latest",
+    "@iconify/react": "^5.2.0",
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "latest",
+    "bcryptjs": "^2.4.3",
+    "clsx": "^2.1.0",
+    "dotenv": "^17.2.3",
+    "marked": "^15.0.0",
+    "next": "latest",
+    "next-auth": "beta",
+    "pg": "^8.18.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "shiki": "^1.29.0",
+    "simple-git": "^3.27.0",
+    "tailwind-merge": "^2.6.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.16.0",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "latest",
+    "postcss": "^8.5.0",
+    "prisma": "latest",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.5.0"
+  }
+}

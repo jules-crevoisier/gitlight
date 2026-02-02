@@ -1,0 +1,22 @@
+# Development docker-compose file
+# Use: docker-compose -f docker-compose.dev.yml up
+
+services:
+  db:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=gitlight
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=gitlight
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gitlight"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data_dev:

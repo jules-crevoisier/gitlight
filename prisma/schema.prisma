@@ -1,0 +1,145 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String    @id @default(cuid())
+  username     String    @unique
+  email        String    @unique
+  passwordHash String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  sshKeys      SSHKey[]
+  accessTokens AccessToken[]
+  repositories Repository[]
+  pullRequests PullRequest[]
+  comments     Comment[]
+  permissions  RepoPermission[]
+  auditLogs    AuditLog[]
+
+  @@map("users")
+}
+
+model SSHKey {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  fingerprint String   @unique
+  publicKey   String
+  createdAt   DateTime @default(now())
+
+  @@map("ssh_keys")
+}
+
+model AccessToken {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  tokenHash String    @unique
+  scopes    String[]
+  expiresAt DateTime?
+  createdAt DateTime  @default(now())
+  lastUsed  DateTime?
+
+  @@map("access_tokens")
+}
+
+model Repository {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  isPublic    Boolean  @default(false)
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  permissions  RepoPermission[]
+  pullRequests PullRequest[]
+
+  @@unique([ownerId, name])
+  @@map("repositories")
+}
+
+model RepoPermission {
+  id        String          @id @default(cuid())
+  repoId    String
+  repo      Repository      @relation(fields: [repoId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  level     PermissionLevel
+  createdAt DateTime        @default(now())
+
+  @@unique([repoId, userId])
+  @@map("repo_permissions")
+}
+
+enum PermissionLevel {
+  READ
+  WRITE
+  ADMIN
+}
+
+model PullRequest {
+  id           String    @id @default(cuid())
+  number       Int
+  title        String
+  description  String?
+  status       PRStatus  @default(OPEN)
+  sourceBranch String
+  targetBranch String
+  repoId       String
+  repo         Repository @relation(fields: [repoId], references: [id], onDelete: Cascade)
+  authorId     String
+  author       User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  mergedAt     DateTime?
+
+  comments Comment[]
+
+  @@unique([repoId, number])
+  @@map("pull_requests")
+}
+
+enum PRStatus {
+  OPEN
+  MERGED
+  CLOSED
+}
+
+model Comment {
+  id         String      @id @default(cuid())
+  content    String
+  prId       String
+  pr         PullRequest @relation(fields: [prId], references: [id], onDelete: Cascade)
+  authorId   String
+  author     User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  lineNumber Int?
+  filePath   String?
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@map("comments")
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action     String
+  resource   String
+  resourceId String?
+  metadata   Json?
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+
+  @@map("audit_logs")
+}
