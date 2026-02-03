@@ -13,9 +13,9 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-sm',
-  secondary: 'bg-white dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-600 hover:bg-zinc-50 dark:hover:bg-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-500',
-  ghost: 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800',
+  primary: 'bg-foreground text-background hover:opacity-90 shadow-sm',
+  secondary: 'bg-background text-foreground-muted border border-border hover:bg-background-muted hover:border-foreground-muted',
+  ghost: 'text-foreground-muted hover:text-foreground hover:bg-background-muted',
   danger: 'bg-red-600 text-white hover:bg-red-700 shadow-sm',
 }
 
@@ -33,7 +33,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled || isLoading}
         className={cn(
           'inline-flex items-center justify-center gap-1.5 rounded-md font-medium transition-all',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/10',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/20',
           'disabled:opacity-50 disabled:cursor-not-allowed',
           variantStyles[variant],
           sizeStyles[size],

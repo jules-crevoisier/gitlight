@@ -42,7 +42,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
           dangerouslySetInnerHTML={{ __html: themeScript }}
         />
       </head>
-      <body className="bg-white text-zinc-900 antialiased dark:bg-zinc-900 dark:text-zinc-100" suppressHydrationWarning>
+      <body className="bg-background text-foreground antialiased" suppressHydrationWarning>
         <ToastProvider>
           {children}
         </ToastProvider>
