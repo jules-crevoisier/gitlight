@@ -18,20 +18,20 @@ export const UserProfile = ({ user }: UserProfileProps) => {
   }
 
   return (
-    <div className="p-4 border-t border-zinc-200 dark:border-zinc-700">
+    <div className="p-4 border-t border-border">
       <div className="flex items-center gap-2 mb-3">
         <ThemeToggle />
-        <span className="text-[10px] text-zinc-500 dark:text-zinc-400">Theme</span>
+        <span className="text-[10px] text-foreground-muted">Theme</span>
       </div>
       <div className="flex items-center gap-3">
         <Avatar name={user.username} size="md" />
         <div className="flex flex-col min-w-0 flex-1">
-          <span className="text-xs font-medium text-zinc-900 dark:text-zinc-100 truncate">{user.username}</span>
-          <span className="text-[10px] text-zinc-500 dark:text-zinc-400">Free Plan</span>
+          <span className="text-xs font-medium text-foreground truncate">{user.username}</span>
+          <span className="text-[10px] text-foreground-muted">Free Plan</span>
         </div>
         <button
           onClick={handleLogout}
-          className="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+          className="text-foreground-muted hover:text-foreground transition-colors"
           aria-label="Logout"
         >
           <Icon name="solar:logout-2-linear" size={16} />
