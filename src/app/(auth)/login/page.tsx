@@ -41,10 +41,10 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-600 shadow-sm p-6">
+    <div className="bg-background rounded-lg border border-border shadow-sm p-6">
       <div className="text-center mb-6">
-        <h1 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Welcome back</h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Sign in to your account</p>
+        <h1 className="text-xl font-semibold text-foreground">Welcome back</h1>
+        <p className="text-sm text-foreground-muted mt-1">Sign in to your account</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -55,7 +55,7 @@ const LoginPage = () => {
         ) : null}
 
         <div className="space-y-1.5">
-          <label htmlFor="email" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+          <label htmlFor="email" className="text-sm font-medium text-foreground">
             Email
           </label>
           <Input
@@ -70,7 +70,7 @@ const LoginPage = () => {
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="password" className="text-sm font-medium text-zinc-700">
+          <label htmlFor="password" className="text-sm font-medium text-foreground">
             Password
           </label>
           <Input
@@ -95,9 +95,9 @@ const LoginPage = () => {
         </Button>
       </form>
 
-      <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 mt-6">
+      <p className="text-center text-sm text-foreground-muted mt-6">
         Don&apos;t have an account?{' '}
-        <Link href="/register" className="text-zinc-900 dark:text-zinc-100 font-medium hover:underline">
+        <Link href="/register" className="text-foreground font-medium hover:underline">
           Sign up
         </Link>
       </p>
