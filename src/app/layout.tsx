@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { ToastProvider } from '@/components/ui/Toast'
 
@@ -19,10 +20,29 @@ type RootLayoutProps = {
   children: React.ReactNode
 }
 
+const themeScript = `(function(){
+  try {
+    var stored = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark = stored === 'dark' || (stored !== 'light' && prefersDark);
+    var el = document.documentElement;
+    el.classList.toggle('dark', isDark);
+    el.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    el.style.colorScheme = isDark ? 'dark' : 'light';
+  } catch (e) {}
+})();`
+
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body className="bg-white text-zinc-900 antialiased dark:bg-zinc-900 dark:text-zinc-100">
+      <head>
+        <Script
+          id="theme-script"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeScript }}
+        />
+      </head>
+      <body className="bg-white text-zinc-900 antialiased dark:bg-zinc-900 dark:text-zinc-100" suppressHydrationWarning>
         <ToastProvider>
           {children}
         </ToastProvider>

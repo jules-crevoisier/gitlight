@@ -82,16 +82,16 @@ export const CollaboratorsList = ({
   }
 
   return (
-    <div className="border border-zinc-200 rounded-lg bg-white overflow-hidden">
+    <div className="border border-zinc-200 dark:border-zinc-600 rounded-lg bg-white dark:bg-zinc-800 overflow-hidden">
       {collaborators.length > 0 ? (
-        <div className="divide-y divide-zinc-100">
+        <div className="divide-y divide-zinc-100 dark:divide-zinc-700">
           {collaborators.map((collab) => (
             <div key={collab.id} className="px-4 py-3 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Avatar name={collab.username} size="sm" />
                 <div>
-                  <p className="text-sm font-medium text-zinc-900">{collab.username}</p>
-                  <p className="text-xs text-zinc-500">{collab.email}</p>
+                  <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{collab.username}</p>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">{collab.email}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -119,22 +119,25 @@ export const CollaboratorsList = ({
           ))}
         </div>
       ) : (
-        <div className="px-4 py-6 text-center text-sm text-zinc-500">
+        <div className="px-4 py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
           No collaborators added yet
         </div>
       )}
 
       {isAdding ? (
-        <form onSubmit={handleAdd} className="p-4 border-t border-zinc-200 bg-zinc-50 space-y-4">
+        <form
+          onSubmit={handleAdd}
+          className="p-4 border-t border-zinc-200 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-900/50 space-y-4"
+        >
           {error ? (
-            <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-md p-3">
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-sm rounded-md p-3">
               {error}
             </div>
           ) : null}
 
           <div className="flex items-end gap-3">
             <div className="flex-1 space-y-1.5">
-              <label className="text-sm font-medium text-zinc-700">Username</label>
+              <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Username</label>
               <Input
                 placeholder="Enter username"
                 value={username}
@@ -143,11 +146,11 @@ export const CollaboratorsList = ({
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-zinc-700">Permission</label>
+              <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Permission</label>
               <select
                 value={level}
                 onChange={(e) => setLevel(e.target.value as 'READ' | 'WRITE' | 'ADMIN')}
-                className="px-3 py-1.5 text-sm border border-zinc-200 rounded-md"
+                className="px-3 py-1.5 text-sm border border-zinc-200 dark:border-zinc-600 rounded-md bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
               >
                 <option value="READ">Read</option>
                 <option value="WRITE">Write</option>
@@ -166,7 +169,7 @@ export const CollaboratorsList = ({
           </div>
         </form>
       ) : (
-        <div className="p-4 border-t border-zinc-200 bg-zinc-50">
+        <div className="p-4 border-t border-zinc-200 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-900/50">
           <Button variant="secondary" onClick={() => setIsAdding(true)} className="w-full">
             <Icon name="solar:add-circle-linear" size={14} />
             Add collaborator

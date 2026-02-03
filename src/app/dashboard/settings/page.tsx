@@ -21,8 +21,8 @@ const SettingsPage = async () => {
   return (
     <>
       {/* Header */}
-      <div className="h-14 border-b border-zinc-200 flex items-center justify-between px-6 lg:px-8 bg-white shrink-0">
-        <h1 className="text-lg font-medium text-zinc-900">Settings</h1>
+      <div className="h-14 border-b border-zinc-200 dark:border-zinc-700 flex items-center justify-between px-6 lg:px-8 bg-white dark:bg-zinc-900 shrink-0">
+        <h1 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">Settings</h1>
       </div>
 
       {/* Content */}
@@ -50,7 +50,7 @@ const SettingsPage = async () => {
 
           {/* SSH Keys Section */}
           <section>
-            <h2 className="text-sm font-medium text-zinc-900 mb-4 flex items-center gap-2">
+            <h2 className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
               <Icon name="solar:key-linear" size={16} />
               SSH Keys
             </h2>
@@ -59,7 +59,7 @@ const SettingsPage = async () => {
 
           {/* Access Tokens Section */}
           <section>
-            <h2 className="text-sm font-medium text-zinc-900 mb-4 flex items-center gap-2">
+            <h2 className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
               <Icon name="solar:shield-keyhole-linear" size={16} />
               Access Tokens
             </h2>

@@ -1,10 +1,15 @@
+/* Dark mode: support `.dark` and `data-theme="dark"` on <html> for Tailwind `dark:` utilities */
+@custom-variant dark (.dark &, [data-theme="dark"] &);
+
 @import "tailwindcss";
 
+/* Dark mode: class .dark or data-theme="dark" on html — Tailwind dark: utilities */
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
 }
 
 :root {
+  color-scheme: light;
   --bg: #ffffff;
   --bg-muted: #fafafa;
   --text: #18181b;
@@ -12,7 +17,9 @@
   --border: #e4e4e7;
 }
 
-.dark {
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
   --bg: #18181b;
   --bg-muted: #27272a;
   --text: #fafafa;
@@ -45,6 +52,16 @@ body {
   background: #d4d4d8;
 }
 
+.dark ::-webkit-scrollbar-thumb,
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #52525b;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #71717a;
+}
+
 /* Code block scrollbar */
 pre::-webkit-scrollbar-thumb {
   background: #3f3f46;
@@ -54,16 +71,37 @@ pre::-webkit-scrollbar-thumb:hover {
   background: #52525b;
 }
 
+.dark pre::-webkit-scrollbar-thumb,
+[data-theme="dark"] pre::-webkit-scrollbar-thumb {
+  background: #52525b;
+}
+
+.dark pre::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] pre::-webkit-scrollbar-thumb:hover {
+  background: #71717a;
+}
+
 /* Selection */
 ::selection {
   background-color: #f4f4f5;
   color: #18181b;
 }
 
+.dark ::selection,
+[data-theme="dark"] ::selection {
+  background-color: #3f3f46;
+  color: #fafafa;
+}
+
 /* Focus styles */
 :focus-visible {
   outline: 2px solid #18181b;
   outline-offset: 2px;
+}
+
+.dark :focus-visible,
+[data-theme="dark"] :focus-visible {
+  outline-color: #fafafa;
 }
 
 /* Smooth scrolling */

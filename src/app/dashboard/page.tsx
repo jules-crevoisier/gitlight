@@ -45,8 +45,8 @@ const DashboardPage = async () => {
   return (
     <>
       {/* Header */}
-      <div className="h-14 border-b border-zinc-200 flex items-center justify-between px-6 lg:px-8 bg-white shrink-0">
-        <h1 className="text-lg font-medium text-zinc-900">Repositories</h1>
+      <div className="h-14 border-b border-zinc-200 dark:border-zinc-700 flex items-center justify-between px-6 lg:px-8 bg-white dark:bg-zinc-900 shrink-0">
+        <h1 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">Repositories</h1>
         <CreateRepoButton />
       </div>
 

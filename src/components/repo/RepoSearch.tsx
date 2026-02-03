@@ -91,11 +91,11 @@ export const RepoSearch = ({ owner, repo, branch, className }: RepoSearchProps) 
             onClick={() => setIsOpen(false)}
             aria-hidden
           />
-          <div className="absolute top-full left-0 mt-1 w-full sm:w-96 max-h-80 overflow-y-auto bg-white border border-zinc-200 rounded-lg shadow-xl z-50">
+          <div className="absolute top-full left-0 mt-1 w-full sm:w-96 max-h-80 overflow-y-auto bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-lg shadow-xl z-50">
             {isLoading ? (
-              <div className="p-4 text-sm text-zinc-500">Searching...</div>
+              <div className="p-4 text-sm text-zinc-500 dark:text-zinc-400">Searching...</div>
             ) : results.length === 0 && query.length >= 2 ? (
-              <div className="p-4 text-sm text-zinc-500">No results</div>
+              <div className="p-4 text-sm text-zinc-500 dark:text-zinc-400">No results</div>
             ) : (
               <ul className="py-2">
                 {results.slice(0, 50).map((r, i) => (
@@ -103,11 +103,11 @@ export const RepoSearch = ({ owner, repo, branch, className }: RepoSearchProps) 
                     <button
                       type="button"
                       onClick={() => handleSelect(r.file, r.line)}
-                      className="w-full text-left px-4 py-2 hover:bg-zinc-50 text-sm font-mono truncate"
+                      className="w-full text-left px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800/60 text-sm font-mono truncate"
                     >
-                      <span className="text-zinc-900">{r.file}</span>
-                      <span className="text-zinc-400 ml-2">:{r.line}</span>
-                      <div className="text-zinc-500 truncate mt-0.5">{r.content}</div>
+                      <span className="text-zinc-900 dark:text-zinc-100">{r.file}</span>
+                      <span className="text-zinc-400 dark:text-zinc-500 ml-2">:{r.line}</span>
+                      <div className="text-zinc-500 dark:text-zinc-400 truncate mt-0.5">{r.content}</div>
                     </button>
                   </li>
                 ))}

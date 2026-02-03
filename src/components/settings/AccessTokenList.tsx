@@ -91,15 +91,15 @@ export const AccessTokenList = ({ tokens }: AccessTokenListProps) => {
   }
 
   return (
-    <div className="border border-zinc-200 rounded-lg bg-white overflow-hidden">
+    <div className="border border-zinc-200 dark:border-zinc-600 rounded-lg bg-white dark:bg-zinc-800 overflow-hidden">
       {/* New token display */}
       {newToken ? (
-        <div className="p-4 bg-emerald-50 border-b border-emerald-200">
-          <p className="text-sm font-medium text-emerald-800 mb-2">
+        <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 border-b border-emerald-200 dark:border-emerald-800">
+          <p className="text-sm font-medium text-emerald-800 dark:text-emerald-300 mb-2">
             Your new access token (copy it now - you won&apos;t see it again):
           </p>
           <div className="flex items-center gap-2">
-            <code className="flex-1 bg-white px-3 py-2 rounded border border-emerald-200 text-sm font-mono">
+            <code className="flex-1 bg-white dark:bg-zinc-800 px-3 py-2 rounded border border-emerald-200 dark:border-emerald-700 text-sm font-mono text-zinc-900 dark:text-zinc-100">
               {newToken}
             </code>
             <Button
@@ -124,11 +124,11 @@ export const AccessTokenList = ({ tokens }: AccessTokenListProps) => {
       ) : null}
 
       {tokens.length > 0 ? (
-        <div className="divide-y divide-zinc-100">
+        <div className="divide-y divide-zinc-100 dark:divide-zinc-600">
           {tokens.map((token) => (
             <div key={token.id} className="px-4 py-3 flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-zinc-900">{token.name}</p>
+                <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{token.name}</p>
                 <div className="flex items-center gap-2 mt-1">
                   {token.scopes.map((scope) => (
                     <Badge key={scope} variant="default" className="text-[9px]">
@@ -158,21 +158,21 @@ export const AccessTokenList = ({ tokens }: AccessTokenListProps) => {
           ))}
         </div>
       ) : (
-        <div className="px-4 py-6 text-center text-sm text-zinc-500">
+        <div className="px-4 py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
           No access tokens created yet
         </div>
       )}
 
       {isAdding ? (
-        <form onSubmit={handleAdd} className="p-4 border-t border-zinc-200 bg-zinc-50 space-y-4">
+        <form onSubmit={handleAdd} className="p-4 border-t border-zinc-200 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-700/50 space-y-4">
           {error ? (
-            <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-md p-3">
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-sm rounded-md p-3">
               {error}
             </div>
           ) : null}
 
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-zinc-700">Token name</label>
+            <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Token name</label>
             <Input
               placeholder="My CI token"
               value={name}
@@ -182,7 +182,7 @@ export const AccessTokenList = ({ tokens }: AccessTokenListProps) => {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-zinc-700">Scopes</label>
+            <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Scopes</label>
             <div className="flex flex-wrap gap-2">
               {['repo:read', 'repo:write', 'user:read'].map((scope) => (
                 <label
@@ -201,7 +201,7 @@ export const AccessTokenList = ({ tokens }: AccessTokenListProps) => {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-zinc-700">Expires in (days)</label>
+            <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Expires in (days)</label>
             <select
               value={expiresInDays}
               onChange={(e) => setExpiresInDays(e.target.value)}
@@ -224,7 +224,7 @@ export const AccessTokenList = ({ tokens }: AccessTokenListProps) => {
           </div>
         </form>
       ) : (
-        <div className="p-4 border-t border-zinc-200 bg-zinc-50">
+        <div className="p-4 border-t border-zinc-200 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-700/50">
           <Button variant="secondary" onClick={() => setIsAdding(true)} className="w-full">
             <Icon name="solar:add-circle-linear" size={14} />
             Create access token

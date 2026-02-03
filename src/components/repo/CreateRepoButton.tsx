@@ -75,12 +75,12 @@ export const CreateRepoButton = () => {
             onClick={() => setIsOpen(false)}
             aria-label="Close"
           />
-          <div className="relative bg-white rounded-lg border border-zinc-200 shadow-xl w-full max-w-md mx-4 p-6">
+          <div className="relative bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-600 shadow-xl w-full max-w-md mx-4 p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-zinc-900">Create repository</h2>
+              <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Create repository</h2>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-zinc-400 hover:text-zinc-600"
+                className="text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300"
               >
                 <Icon name="solar:close-circle-linear" size={20} />
               </button>
@@ -88,13 +88,13 @@ export const CreateRepoButton = () => {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {error ? (
-                <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-md p-3">
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-sm rounded-md p-3">
                   {error}
                 </div>
               ) : null}
 
               <div className="space-y-1.5">
-                <label htmlFor="name" className="text-sm font-medium text-zinc-700">
+                <label htmlFor="name" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
                   Repository name
                 </label>
                 <Input
@@ -108,8 +108,8 @@ export const CreateRepoButton = () => {
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="description" className="text-sm font-medium text-zinc-700">
-                  Description <span className="text-zinc-400">(optional)</span>
+                <label htmlFor="description" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  Description <span className="text-zinc-400 dark:text-zinc-500">(optional)</span>
                 </label>
                 <Input
                   id="description"
@@ -121,9 +121,9 @@ export const CreateRepoButton = () => {
               </div>
 
               <div className="space-y-3">
-                <label className="text-sm font-medium text-zinc-700">Visibility</label>
+                <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Visibility</label>
                 <div className="space-y-2">
-                  <label className="flex items-start gap-3 p-3 border border-zinc-200 rounded-md cursor-pointer hover:bg-zinc-50 transition-colors">
+                  <label className="flex items-start gap-3 p-3 border border-zinc-200 dark:border-zinc-600 rounded-md cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors">
                     <input
                       type="radio"
                       name="visibility"
@@ -133,15 +133,15 @@ export const CreateRepoButton = () => {
                     />
                     <div>
                       <div className="flex items-center gap-2">
-                        <Icon name="solar:global-linear" size={16} className="text-zinc-600" />
-                        <span className="text-sm font-medium text-zinc-900">Public</span>
+                        <Icon name="solar:global-linear" size={16} className="text-zinc-600 dark:text-zinc-400" />
+                        <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Public</span>
                       </div>
-                      <p className="text-xs text-zinc-500 mt-0.5">
+                      <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
                         Anyone can see this repository
                       </p>
                     </div>
                   </label>
-                  <label className="flex items-start gap-3 p-3 border border-zinc-200 rounded-md cursor-pointer hover:bg-zinc-50 transition-colors">
+                  <label className="flex items-start gap-3 p-3 border border-zinc-200 dark:border-zinc-600 rounded-md cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors">
                     <input
                       type="radio"
                       name="visibility"
@@ -151,10 +151,10 @@ export const CreateRepoButton = () => {
                     />
                     <div>
                       <div className="flex items-center gap-2">
-                        <Icon name="solar:lock-linear" size={16} className="text-zinc-600" />
-                        <span className="text-sm font-medium text-zinc-900">Private</span>
+                        <Icon name="solar:lock-linear" size={16} className="text-zinc-600 dark:text-zinc-400" />
+                        <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Private</span>
                       </div>
-                      <p className="text-xs text-zinc-500 mt-0.5">
+                      <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
                         Only you and collaborators can see
                       </p>
                     </div>

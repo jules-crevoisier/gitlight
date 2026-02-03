@@ -10,7 +10,9 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "compose:dev": "docker compose -f docker-compose.dev.yml up -d",
+    "compose:dev:down": "docker compose -f docker-compose.dev.yml down"
   },
   "dependencies": {
     "@auth/prisma-adapter": "latest",

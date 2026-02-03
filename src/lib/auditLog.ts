@@ -1,3 +1,4 @@
+import { Prisma } from '@prisma/client'
 import { prisma } from './db'
 
 export type AuditAction =
@@ -34,7 +35,8 @@ export const createAuditLog = async (data: AuditLogData): Promise<void> => {
         action: data.action,
         resource: data.resource,
         resourceId: data.resourceId || null,
-        metadata: data.metadata || null,
+        metadata: (data.metadata ?? Prisma.JsonNull) as
+          Prisma.NullableJsonNullValueInput | Prisma.InputJsonValue,
         ipAddress: data.ipAddress || null,
       },
     })
