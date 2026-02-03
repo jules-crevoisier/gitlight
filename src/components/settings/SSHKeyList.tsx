@@ -76,15 +76,15 @@ export const SSHKeyList = ({ keys }: SSHKeyListProps) => {
   }
 
   return (
-    <div className="border border-zinc-200 rounded-lg bg-white overflow-hidden">
+    <div className="border border-zinc-200 dark:border-zinc-600 rounded-lg bg-white dark:bg-zinc-800 overflow-hidden">
       {keys.length > 0 ? (
-        <div className="divide-y divide-zinc-100">
+        <div className="divide-y divide-zinc-100 dark:divide-zinc-600">
           {keys.map((key) => (
             <div key={key.id} className="px-4 py-3 flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-zinc-900">{key.title}</p>
-                <p className="text-xs text-zinc-500 font-mono mt-0.5">{key.fingerprint}</p>
-                <p className="text-xs text-zinc-400 mt-1">
+                <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{key.title}</p>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 font-mono mt-0.5">{key.fingerprint}</p>
+                <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-1">
                   Added {formatRelativeTime(key.createdAt)}
                 </p>
               </div>
@@ -106,15 +106,15 @@ export const SSHKeyList = ({ keys }: SSHKeyListProps) => {
       )}
 
       {isAdding ? (
-        <form onSubmit={handleAdd} className="p-4 border-t border-zinc-200 bg-zinc-50 space-y-4">
+        <form onSubmit={handleAdd} className="p-4 border-t border-zinc-200 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-700/50 space-y-4">
           {error ? (
-            <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-md p-3">
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-sm rounded-md p-3">
               {error}
             </div>
           ) : null}
 
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-zinc-700">Title</label>
+            <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Title</label>
             <Input
               placeholder="My laptop"
               value={title}
@@ -124,7 +124,7 @@ export const SSHKeyList = ({ keys }: SSHKeyListProps) => {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-zinc-700">Public Key</label>
+            <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Public Key</label>
             <textarea
               placeholder="ssh-ed25519 AAAAC3..."
               value={publicKey}
@@ -145,7 +145,7 @@ export const SSHKeyList = ({ keys }: SSHKeyListProps) => {
           </div>
         </form>
       ) : (
-        <div className="p-4 border-t border-zinc-200 bg-zinc-50">
+        <div className="p-4 border-t border-zinc-200 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-700/50">
           <Button variant="secondary" onClick={() => setIsAdding(true)} className="w-full">
             <Icon name="solar:add-circle-linear" size={14} />
             Add SSH key

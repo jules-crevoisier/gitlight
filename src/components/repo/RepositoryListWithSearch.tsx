@@ -48,7 +48,7 @@ export const RepositoryListWithSearch = ({
           className="max-w-md"
         />
         {query && (
-          <p className="text-xs text-zinc-500 mt-1.5">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1.5">
             {filtered.length} of {repositories.length} repositories
           </p>
         )}

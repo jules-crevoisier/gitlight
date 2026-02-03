@@ -52,15 +52,18 @@ export const RepoSettingsForm = ({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="border border-zinc-200 rounded-lg p-4 bg-white space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="border border-zinc-200 dark:border-zinc-700 rounded-lg p-4 bg-white dark:bg-zinc-900 space-y-4"
+    >
       <div className="space-y-1.5">
-        <label className="text-sm font-medium text-zinc-700">Repository name</label>
-        <Input value={name} disabled className="bg-zinc-50" />
-        <p className="text-xs text-zinc-500">Repository names cannot be changed.</p>
+        <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Repository name</label>
+        <Input value={name} disabled className="bg-zinc-50 dark:bg-zinc-900" />
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">Repository names cannot be changed.</p>
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-sm font-medium text-zinc-700">Description</label>
+        <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Description</label>
         <Input
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -69,9 +72,9 @@ export const RepoSettingsForm = ({
       </div>
 
       <div className="space-y-3">
-        <label className="text-sm font-medium text-zinc-700">Visibility</label>
+        <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Visibility</label>
         <div className="space-y-2">
-          <label className="flex items-start gap-3 p-3 border border-zinc-200 rounded-md cursor-pointer hover:bg-zinc-50">
+          <label className="flex items-start gap-3 p-3 border border-zinc-200 dark:border-zinc-700 rounded-md cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">
             <input
               type="radio"
               name="visibility"
@@ -81,13 +84,13 @@ export const RepoSettingsForm = ({
             />
             <div>
               <div className="flex items-center gap-2">
-                <Icon name="solar:global-linear" size={16} className="text-zinc-600" />
-                <span className="text-sm font-medium text-zinc-900">Public</span>
+                <Icon name="solar:global-linear" size={16} className="text-zinc-600 dark:text-zinc-400" />
+                <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Public</span>
               </div>
-              <p className="text-xs text-zinc-500 mt-0.5">Anyone can see this repository</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Anyone can see this repository</p>
             </div>
           </label>
-          <label className="flex items-start gap-3 p-3 border border-zinc-200 rounded-md cursor-pointer hover:bg-zinc-50">
+          <label className="flex items-start gap-3 p-3 border border-zinc-200 dark:border-zinc-700 rounded-md cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">
             <input
               type="radio"
               name="visibility"
@@ -97,10 +100,10 @@ export const RepoSettingsForm = ({
             />
             <div>
               <div className="flex items-center gap-2">
-                <Icon name="solar:lock-linear" size={16} className="text-zinc-600" />
-                <span className="text-sm font-medium text-zinc-900">Private</span>
+                <Icon name="solar:lock-linear" size={16} className="text-zinc-600 dark:text-zinc-400" />
+                <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Private</span>
               </div>
-              <p className="text-xs text-zinc-500 mt-0.5">Only you and collaborators can see</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Only you and collaborators can see</p>
             </div>
           </label>
         </div>
@@ -108,7 +111,7 @@ export const RepoSettingsForm = ({
 
       <div className="flex items-center justify-between pt-2">
         {success ? (
-          <span className="text-sm text-emerald-600 flex items-center gap-1">
+          <span className="text-sm text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
             <Icon name="solar:check-circle-linear" size={14} />
             Settings saved
           </span>

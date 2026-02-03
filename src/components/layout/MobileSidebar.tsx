@@ -62,23 +62,23 @@ export const MobileSidebar = ({ isOpen, onClose, user, openPRCount = 0 }: Mobile
       />
       <aside
         className={cn(
-          'fixed top-0 left-0 z-50 w-64 h-full border-r border-zinc-200 bg-white flex-col md:hidden',
+          'fixed top-0 left-0 z-50 w-64 h-full border-r border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 flex-col md:hidden',
           'flex justify-between shadow-xl'
         )}
         role="dialog"
         aria-label="Navigation menu"
       >
 <div className="flex-1 overflow-y-auto">
-        <div className="h-14 flex items-center justify-between px-5 border-b border-zinc-100">
+        <div className="h-14 flex items-center justify-between px-5 border-b border-zinc-100 dark:border-zinc-800">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-zinc-900 rounded-md flex items-center justify-center text-white text-xs font-medium tracking-tighter">
+            <div className="w-6 h-6 bg-zinc-900 dark:bg-zinc-100 rounded-md flex items-center justify-center text-white dark:text-zinc-900 text-xs font-medium tracking-tighter">
               GL
             </div>
-            <span className="font-medium tracking-tight text-sm text-zinc-800">GitLight</span>
+            <span className="font-medium tracking-tight text-sm text-zinc-800 dark:text-zinc-100">GitLight</span>
           </Link>
           <button
             onClick={onClose}
-            className="p-2 text-zinc-500 hover:text-zinc-900"
+            className="p-2 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
             aria-label="Close menu"
           >
             <Icon name="solar:close-circle-linear" size={24} />
@@ -97,14 +97,14 @@ export const MobileSidebar = ({ isOpen, onClose, user, openPRCount = 0 }: Mobile
                   className={cn(
                     'flex items-center gap-3 px-3 py-2 text-sm rounded-md transition-all',
                     isActive
-                      ? 'text-zinc-900 bg-zinc-100 border border-zinc-200/60'
-                      : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50'
+                      ? 'text-zinc-900 dark:text-zinc-100 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200/60 dark:border-zinc-600'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800'
                   )}
                 >
-                  <Icon name={item.icon} size={18} className="text-zinc-500" />
+                  <Icon name={item.icon} size={18} className="text-zinc-500 dark:text-zinc-400" />
                   <span className="font-medium">{item.label}</span>
                   {typeof item.count === 'number' && item.count > 0 ? (
-                    <span className="ml-auto text-[10px] bg-zinc-200 text-zinc-600 px-1.5 py-0.5 rounded-full font-medium">
+                    <span className="ml-auto text-[10px] bg-zinc-200 dark:bg-zinc-600 text-zinc-600 dark:text-zinc-300 px-1.5 py-0.5 rounded-full font-medium">
                       {item.count}
                     </span>
                   ) : null}

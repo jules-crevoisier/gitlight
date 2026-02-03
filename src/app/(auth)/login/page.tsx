@@ -41,21 +41,21 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="bg-white rounded-lg border border-zinc-200 shadow-sm p-6">
+    <div className="bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-600 shadow-sm p-6">
       <div className="text-center mb-6">
-        <h1 className="text-xl font-semibold text-zinc-900">Welcome back</h1>
-        <p className="text-sm text-zinc-500 mt-1">Sign in to your account</p>
+        <h1 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Welcome back</h1>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Sign in to your account</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {error ? (
-          <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-md p-3">
+          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-sm rounded-md p-3">
             {error}
           </div>
         ) : null}
 
         <div className="space-y-1.5">
-          <label htmlFor="email" className="text-sm font-medium text-zinc-700">
+          <label htmlFor="email" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
             Email
           </label>
           <Input
@@ -95,9 +95,9 @@ const LoginPage = () => {
         </Button>
       </form>
 
-      <p className="text-center text-sm text-zinc-500 mt-6">
+      <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 mt-6">
         Don&apos;t have an account?{' '}
-        <Link href="/register" className="text-zinc-900 font-medium hover:underline">
+        <Link href="/register" className="text-zinc-900 dark:text-zinc-100 font-medium hover:underline">
           Sign up
         </Link>
       </p>

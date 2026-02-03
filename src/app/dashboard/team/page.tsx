@@ -37,16 +37,16 @@ const TeamPage = async () => {
 
   return (
     <>
-      <div className="h-14 border-b border-zinc-200 flex items-center justify-between px-6 lg:px-8 bg-white shrink-0">
-        <h1 className="text-lg font-medium text-zinc-900">Team</h1>
+      <div className="h-14 border-b border-zinc-200 dark:border-zinc-700 flex items-center justify-between px-6 lg:px-8 bg-white dark:bg-zinc-900 shrink-0">
+        <h1 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">Team</h1>
       </div>
 
       <div className="flex-1 overflow-y-auto">
         <div className="max-w-5xl mx-auto px-6 lg:px-8 py-8 space-y-8">
-          <div className="border border-zinc-200 rounded-lg bg-zinc-50/50 p-4">
-            <p className="text-sm text-zinc-600">
+          <div className="border border-zinc-200 dark:border-zinc-600 rounded-lg bg-zinc-50/50 dark:bg-zinc-800/50 p-4">
+            <p className="text-sm text-zinc-600 dark:text-zinc-400">
               Manage collaborators per repository in{' '}
-              <Link href="/dashboard/settings" className="text-zinc-900 font-medium underline">
+              <Link href="/dashboard/settings" className="text-zinc-900 dark:text-zinc-100 font-medium underline">
                 Settings
               </Link>
               . Here you see repositories where you collaborate.
@@ -55,30 +55,30 @@ const TeamPage = async () => {
 
           {reposWhereICollaborate.length > 0 ? (
             <section>
-              <h2 className="text-sm font-medium text-zinc-700 mb-4">
+              <h2 className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-4">
                 Repositories where I collaborate
               </h2>
-              <div className="border border-zinc-200 rounded-lg overflow-hidden divide-y divide-zinc-100 bg-white">
+              <div className="border border-zinc-200 dark:border-zinc-600 rounded-lg overflow-hidden divide-y divide-zinc-100 dark:divide-zinc-700 bg-white dark:bg-zinc-800">
                 {reposWhereICollaborate.map((repo) => {
                   const myPermission = repo.permissions.find((p) => p.userId === session.user.id)
                   return (
                     <Link
                       key={repo.id}
                       href={`/${repo.owner.username}/${repo.name}`}
-                      className="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors"
+                      className="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors"
                     >
                       <div className="flex items-center gap-3">
-                        <Icon name="solar:code-square-linear" size={20} className="text-zinc-400" />
-                        <span className="text-sm font-medium text-zinc-900">
+                        <Icon name="solar:code-square-linear" size={20} className="text-zinc-400 dark:text-zinc-500" />
+                        <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
                           {repo.owner.username}/{repo.name}
                         </span>
-                        <span className="text-xs text-zinc-500 capitalize">
+                        <span className="text-xs text-zinc-500 dark:text-zinc-400 capitalize">
                           {myPermission?.level.toLowerCase()}
                         </span>
                       </div>
                       <Link
                         href={`/${repo.owner.username}/${repo.name}/settings`}
-                        className="text-xs text-zinc-500 hover:text-zinc-900"
+                        className="text-xs text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
                         onClick={(e) => e.stopPropagation()}
                       >
                         Settings
@@ -91,12 +91,12 @@ const TeamPage = async () => {
           ) : null}
 
           <section>
-            <h2 className="text-sm font-medium text-zinc-700 mb-4">My repositories & collaborators</h2>
+            <h2 className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-4">My repositories & collaborators</h2>
             {reposIOwn.length === 0 ? (
-              <div className="text-center py-12 border border-zinc-200 rounded-lg bg-zinc-50/50">
-                <Icon name="solar:code-square-linear" size={48} className="text-zinc-300 mx-auto mb-4" />
-                <p className="text-sm text-zinc-500">No repositories yet.</p>
-                <Link href="/dashboard" className="text-sm text-zinc-900 font-medium mt-2 inline-block">
+              <div className="text-center py-12 border border-zinc-200 dark:border-zinc-600 rounded-lg bg-zinc-50/50 dark:bg-zinc-800/50">
+                <Icon name="solar:code-square-linear" size={48} className="text-zinc-300 dark:text-zinc-500 mx-auto mb-4" />
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">No repositories yet.</p>
+                <Link href="/dashboard" className="text-sm text-zinc-900 dark:text-zinc-100 font-medium mt-2 inline-block">
                   Create one
                 </Link>
               </div>
@@ -105,25 +105,25 @@ const TeamPage = async () => {
                 {reposIOwn.map((repo) => (
                   <div
                     key={repo.id}
-                    className="border border-zinc-200 rounded-lg overflow-hidden bg-white"
+                    className="border border-zinc-200 dark:border-zinc-600 rounded-lg overflow-hidden bg-white dark:bg-zinc-800"
                   >
-                    <div className="px-4 py-3 border-b border-zinc-100 flex items-center justify-between bg-zinc-50/50">
+                    <div className="px-4 py-3 border-b border-zinc-100 dark:border-zinc-600 flex items-center justify-between bg-zinc-50/50 dark:bg-zinc-700/50">
                       <Link
                         href={`/${repo.owner.username}/${repo.name}`}
-                        className="text-sm font-medium text-zinc-900 hover:underline"
+                        className="text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:underline"
                       >
                         {repo.owner.username}/{repo.name}
                       </Link>
                       <Link
                         href={`/${repo.owner.username}/${repo.name}/settings`}
-                        className="text-xs text-zinc-500 hover:text-zinc-900 flex items-center gap-1"
+                        className="text-xs text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 flex items-center gap-1"
                       >
                         <Icon name="solar:settings-linear" size={14} />
                         Add collaborator
                       </Link>
                     </div>
                     {repo.permissions.length > 0 ? (
-                      <div className="divide-y divide-zinc-100">
+                      <div className="divide-y divide-zinc-100 dark:divide-zinc-600">
                         {repo.permissions.map((p) => (
                           <div
                             key={p.id}
@@ -131,15 +131,15 @@ const TeamPage = async () => {
                           >
                             <Avatar name={p.user.username} size="sm" />
                             <div className="flex-1 min-w-0">
-                              <p className="text-sm font-medium text-zinc-900">{p.user.username}</p>
-                              <p className="text-xs text-zinc-500 truncate">{p.user.email}</p>
+                              <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{p.user.username}</p>
+                              <p className="text-xs text-zinc-500 dark:text-zinc-400 truncate">{p.user.email}</p>
                             </div>
-                            <span className="text-xs text-zinc-500 capitalize">{p.level.toLowerCase()}</span>
+                            <span className="text-xs text-zinc-500 dark:text-zinc-400 capitalize">{p.level.toLowerCase()}</span>
                           </div>
                         ))}
                       </div>
                     ) : (
-                      <div className="px-4 py-6 text-center text-sm text-zinc-500">
+                      <div className="px-4 py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
                         No collaborators. Add some in repository settings.
                       </div>
                     )}

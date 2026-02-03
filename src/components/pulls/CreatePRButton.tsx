@@ -111,12 +111,12 @@ export const CreatePRButton = ({ owner, repo }: CreatePRButtonProps) => {
             className="absolute inset-0 bg-black/20 backdrop-blur-sm"
             onClick={() => setIsOpen(false)}
           />
-          <div className="relative bg-white rounded-lg border border-zinc-200 shadow-xl w-full max-w-lg mx-4 p-6">
+          <div className="relative bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-600 shadow-xl w-full max-w-lg mx-4 p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-zinc-900">Create pull request</h2>
+              <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Create pull request</h2>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-zinc-400 hover:text-zinc-600"
+                className="text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300"
               >
                 <Icon name="solar:close-circle-linear" size={20} />
               </button>
@@ -124,22 +124,22 @@ export const CreatePRButton = ({ owner, repo }: CreatePRButtonProps) => {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {error ? (
-                <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-md p-3">
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-sm rounded-md p-3">
                   {error}
                 </div>
               ) : null}
 
               {/* Branch Selection */}
               <div className="space-y-3">
-                <div className="flex items-center gap-3 p-3 bg-zinc-50 rounded-lg border border-zinc-200">
+                <div className="flex items-center gap-3 p-3 bg-zinc-50 dark:bg-zinc-900/50 rounded-lg border border-zinc-200 dark:border-zinc-700">
                   <div className="flex-1">
-                    <label className="text-xs font-medium text-zinc-500 mb-1.5 block">
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1.5 block">
                       Merge from (your changes)
                     </label>
                     <select
                       value={sourceBranch}
                       onChange={(e) => setSourceBranch(e.target.value)}
-                      className="w-full px-3 py-1.5 text-sm border border-zinc-200 rounded-md bg-white font-mono"
+                      className="w-full px-3 py-1.5 text-sm border border-zinc-200 dark:border-zinc-600 rounded-md bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-mono"
                     >
                       <option value="">Select branch...</option>
                       {branches
@@ -150,17 +150,17 @@ export const CreatePRButton = ({ owner, repo }: CreatePRButtonProps) => {
                     </select>
                   </div>
                   <div className="flex flex-col items-center gap-1 px-2">
-                    <Icon name="solar:arrow-right-linear" size={20} className="text-zinc-400" />
-                    <span className="text-[10px] text-zinc-400">into</span>
+                    <Icon name="solar:arrow-right-linear" size={20} className="text-zinc-400 dark:text-zinc-500" />
+                    <span className="text-[10px] text-zinc-400 dark:text-zinc-500">into</span>
                   </div>
                   <div className="flex-1">
-                    <label className="text-xs font-medium text-zinc-500 mb-1.5 block">
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1.5 block">
                       Merge into (base)
                     </label>
                     <select
                       value={targetBranch}
                       onChange={(e) => setTargetBranch(e.target.value)}
-                      className="w-full px-3 py-1.5 text-sm border border-zinc-200 rounded-md bg-white font-mono"
+                      className="w-full px-3 py-1.5 text-sm border border-zinc-200 dark:border-zinc-600 rounded-md bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-mono"
                     >
                       {branches.map((b) => (
                         <option key={b.name} value={b.name}>
@@ -187,17 +187,17 @@ export const CreatePRButton = ({ owner, repo }: CreatePRButtonProps) => {
                       </span>
                     ) : null}
                     {comparison.ahead === 0 && comparison.behind === 0 ? (
-                      <span className="text-zinc-500">Branches are identical</span>
+                      <span className="text-zinc-500 dark:text-zinc-400">Branches are identical</span>
                     ) : null}
                     {comparison.ahead === 0 && comparison.behind > 0 ? (
-                      <span className="text-zinc-500">Nothing to merge (source is behind target)</span>
+                      <span className="text-zinc-500 dark:text-zinc-400">Nothing to merge (source is behind target)</span>
                     ) : null}
                   </div>
                 ) : null}
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="title" className="text-sm font-medium text-zinc-700">
+                <label htmlFor="title" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
                   Title
                 </label>
                 <Input
@@ -211,8 +211,8 @@ export const CreatePRButton = ({ owner, repo }: CreatePRButtonProps) => {
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="description" className="text-sm font-medium text-zinc-700">
-                  Description <span className="text-zinc-400">(optional)</span>
+                <label htmlFor="description" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  Description <span className="text-zinc-400 dark:text-zinc-500">(optional)</span>
                 </label>
                 <textarea
                   id="description"
@@ -220,7 +220,7 @@ export const CreatePRButton = ({ owner, repo }: CreatePRButtonProps) => {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={4}
-                  className="w-full px-3 py-2 text-sm border border-zinc-200 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-zinc-900/5"
+                  className="w-full px-3 py-2 text-sm border border-zinc-200 dark:border-zinc-600 rounded-md resize-none bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-900/5 dark:focus:ring-zinc-100/10"
                 />
               </div>
 

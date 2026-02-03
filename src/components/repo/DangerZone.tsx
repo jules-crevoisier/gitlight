@@ -40,25 +40,25 @@ export const DangerZone = ({ repoId, owner, repo }: DangerZoneProps) => {
   }
 
   return (
-    <div className="border border-red-200 rounded-lg bg-red-50/50 overflow-hidden">
+    <div className="border border-red-200 dark:border-red-800 rounded-lg bg-red-50/50 dark:bg-red-900/20 overflow-hidden">
       <div className="p-4">
-        <h3 className="text-sm font-medium text-red-800 mb-1">Delete this repository</h3>
-        <p className="text-xs text-red-600">
+        <h3 className="text-sm font-medium text-red-800 dark:text-red-300 mb-1">Delete this repository</h3>
+        <p className="text-xs text-red-600 dark:text-red-300/80">
           Once you delete a repository, there is no going back. Please be certain.
         </p>
       </div>
 
       {isDeleting ? (
-        <div className="p-4 border-t border-red-200 bg-white space-y-4">
-          <div className="bg-red-100 border border-red-200 rounded-md p-3">
-            <p className="text-sm text-red-800">
+        <div className="p-4 border-t border-red-200 dark:border-red-800 bg-white dark:bg-zinc-900 space-y-4">
+          <div className="bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-md p-3">
+            <p className="text-sm text-red-800 dark:text-red-200">
               This will permanently delete the <strong>{owner}/{repo}</strong> repository,
               including all commits, branches, pull requests, and collaborators.
             </p>
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-zinc-700">
+            <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
               Type <strong>{repo}</strong> to confirm
             </label>
             <Input
@@ -91,7 +91,7 @@ export const DangerZone = ({ repoId, owner, repo }: DangerZoneProps) => {
           </div>
         </div>
       ) : (
-        <div className="p-4 border-t border-red-200 bg-white">
+        <div className="p-4 border-t border-red-200 dark:border-red-800 bg-white dark:bg-zinc-900">
           <Button variant="danger" onClick={() => setIsDeleting(true)}>
             <Icon name="solar:trash-bin-minimalistic-linear" size={14} />
             Delete this repository

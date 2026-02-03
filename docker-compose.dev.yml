@@ -1,11 +1,33 @@
 # Development docker-compose file
-# Use: docker-compose -f docker-compose.dev.yml up
+# Use: docker compose -f docker-compose.dev.yml up
 
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./repositories:/data/repositories
+    environment:
+      - DATABASE_URL=postgresql://gitlight:password@db:5432/gitlight
+      - AUTH_SECRET=${AUTH_SECRET:-gitlight-docker-dev-secret}
+      - AUTH_URL=http://localhost:3000
+      - REPOS_PATH=/data/repositories
+      - NODE_ENV=development
+    depends_on:
+      db:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+
   db:
     image: postgres:16-alpine
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data_dev:/var/lib/postgresql/data
     environment:
