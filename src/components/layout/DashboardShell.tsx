@@ -23,7 +23,7 @@ export const DashboardShell = ({ user, openPRCount, children }: DashboardShellPr
         user={user}
         openPRCount={openPRCount}
       />
-      <main className="flex-1 flex flex-col h-screen overflow-hidden bg-white dark:bg-zinc-900">
+      <main className="flex-1 flex flex-col h-screen overflow-hidden bg-background">
         <Header onMenuClick={() => setMobileMenuOpen(true)} />
         {children}
       </main>

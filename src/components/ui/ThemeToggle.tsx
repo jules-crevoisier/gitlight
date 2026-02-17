@@ -35,7 +35,7 @@ export const ThemeToggle = () => {
   if (!mounted) {
     return (
       <span
-        className="p-2 text-zinc-400 rounded-md inline-block w-9 h-9"
+        className="p-2 text-foreground-muted rounded-md inline-block w-9 h-9"
         aria-hidden
       >
         <Icon name="solar:moon-linear" size={20} />
@@ -47,7 +47,7 @@ export const ThemeToggle = () => {
     <button
       type="button"
       onClick={handleToggle}
-      className="p-2 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-md transition-colors"
+      className="p-2 text-foreground-muted hover:text-foreground rounded-md transition-colors"
       aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {dark ? (

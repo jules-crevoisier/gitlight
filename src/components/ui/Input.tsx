@@ -13,16 +13,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="relative">
         {icon ? (
-          <div className="absolute left-2.5 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500">
+          <div className="absolute left-2.5 top-1/2 -translate-y-1/2 text-foreground-muted">
             {icon}
           </div>
         ) : null}
         <input
           ref={ref}
           className={cn(
-            'w-full rounded-md border border-zinc-200 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 text-sm',
-            'placeholder:text-zinc-400 dark:placeholder:text-zinc-500',
-            'focus:outline-none focus:ring-2 focus:ring-zinc-900/5 dark:focus:ring-zinc-100/10 focus:border-zinc-300 dark:focus:border-zinc-500',
+            'w-full rounded-md border border-border bg-background text-foreground text-sm',
+            'placeholder:text-foreground-muted',
+            'focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground-muted',
             'disabled:opacity-50 disabled:cursor-not-allowed',
             'transition-colors',
             icon ? 'pl-8 pr-3 py-1.5' : 'px-3 py-1.5',
